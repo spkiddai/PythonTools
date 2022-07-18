@@ -1,0 +1,9 @@
+API:
+  login: https://api.zoomeye.org/user/login
+  info: https://api.zoomeye.org/resources-info
+  host: https://api.zoomeye.org/host/search
+  web: https://api.zoomeye.org/web/search
+Auth:
+  APIkey:
+  user:
+  pass:
