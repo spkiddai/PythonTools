@@ -5,6 +5,7 @@ PHPWebshellScan Release
 > 
 * Python3.7
 * sklearn
+* PHP7+VLD扩展
 ***
 # 运行方式
 > 
