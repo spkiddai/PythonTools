@@ -1,8 +1,8 @@
-import logging,json,requests,argparse, sys
+import logging,json,requests,argparse,sys,urllib3
 from functools import reduce
 from hashlib import md5
 from urllib.parse import parse_qs
-from requests.packages import urllib3
+
 
 logging.basicConfig(level=logging.INFO, format='[%(levelname)s] %(message)s')
 logger = logging.getLogger(__name__)
