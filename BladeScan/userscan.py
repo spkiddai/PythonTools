@@ -115,6 +115,7 @@ def Run(url,args):
     if Get_api(url,args.auth):
         if args.read == True:
             Getdata(url,args)
+        return True
     else:
         return None
 
@@ -127,7 +128,6 @@ if __name__ == "__main__":
             u = u.rstrip()
             if Run(u,args) != None:
                 args.out.write(u + "\n")
-                args.out.close()
     elif args.url != None:
         Run(args.url,args)
     else:
