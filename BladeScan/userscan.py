@@ -75,16 +75,19 @@ def Request_api(url,auth):
     except:
         return None
 
-def Get_api(url,auth):
+def getapi(url,auth):
     result = Request_api(url,auth)
     if result != None:
-        maxpage = result['data']['pages']
-        logger.info("Max Page:" + str(maxpage))
-        return True
+        try:
+            maxpage = result['data']['pages']
+            logger.info("Max Page:" + str(maxpage))
+            return True
+        except:
+            return None
     else:
         return False
 
-def Savedata(url,data_list):
+def savedata(url,data_list):
     #列表中字典去重
     run_function = lambda x, y: x if y in x else x + [y]
     rdata_list = reduce(run_function, [[], ] + data_list)
@@ -95,7 +98,7 @@ def Savedata(url,data_list):
                 f.write(str(rdata_dict)+"\n")
             f.close()
 
-def Getdata(url,args):
+def getdata(url,args):
     max_page = int(args.page)
     min_page = 1
     data = []
@@ -105,16 +108,16 @@ def Getdata(url,args):
         min_page += 1
         result = Request_api(purl, args.auth)
         data = data + Extract_json(result)
-        Savedata(url, data)
+        savedata(url, data)
     return
 
 
-def Run(url,args):
+def run(url,args):
     url = Extract_url(url,args)
     logger.info("URL地址:"+url)
-    if Get_api(url,args.auth):
+    if getapi(url,args.auth):
         if args.read == True:
-            Getdata(url,args)
+            getdata(url,args)
         return True
     else:
         return None
@@ -126,10 +129,11 @@ if __name__ == "__main__":
     if args.file != None:
         for u in args.file.readlines():
             u = u.rstrip()
-            if Run(u,args) != None:
+            res = run(u, args)
+            if res != None:
                 args.out.write(u + "\n")
     elif args.url != None:
-        Run(args.url,args)
+        run(args.url,args)
     else:
         logger.error("Not Found URL")
         logger.info("usage: logscan.py [-h]")
