@@ -35,8 +35,8 @@ BladeScan Release
 # 漏洞说明
 * 由于接口权限限制宽松，导致/api/blade-log/api/list接口存在两种问题。
 * 1.未授权问题：无需登录即可访问 
-* 例:https://test.com/api/blade-log/api/list
+* 例:https://xxx.com/api/blade-log/api/list
 * 未登录情况下直接访问接口，获取登录账户信息
 * 2.权限限制不严格问题：登录低权限用户即可访问获取管理员账户密码
 * 使用低权限人事账户登录官网演示站:https://saber.bladex.vip/#/login
-* 访问https://saber.bladex.vip/api/blade-log/api/list接口查看admin用户密码信息
+* 访问https://saber.bladex.vip/api/blade-log/api/list接口查看admin用户密码信息或token
